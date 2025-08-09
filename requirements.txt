@@ -1,0 +1,18 @@
+# Core FastAPI and server
+fastapi
+uvicorn[standard]
+pydantic
+
+# Configuration and logging
+python-dotenv
+structlog
+
+# AI Models & Providers
+ollama
+openai
+anthropic
+requests
+
+# Testing (only if needed)
+pytest
+pytest-asyncio

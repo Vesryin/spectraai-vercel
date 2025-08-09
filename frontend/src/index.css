@@ -1,0 +1,159 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Professional Dark Theme Base */
+body {
+  font-family: 'Inter', 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Professional Scrollbar */
+.chat-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.chat-scrollbar::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.3);
+  border-radius: 4px;
+}
+
+.chat-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #8b5cf6, #a855f7);
+  border-radius: 4px;
+  border: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+.chat-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #7c3aed, #9333ea);
+}
+
+/* Enhanced Typing Animation */
+.typing-indicator span {
+  animation: professionalTyping 1.6s infinite ease-in-out;
+  transform-origin: center;
+}
+
+.typing-indicator span:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.typing-indicator span:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+@keyframes professionalTyping {
+  0%, 60%, 100% {
+    transform: scale(0.8);
+    opacity: 0.4;
+  }
+  30% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+/* Professional Glow Effects */
+.spectra-glow {
+  box-shadow: 
+    0 0 20px rgba(139, 92, 246, 0.3),
+    0 0 40px rgba(139, 92, 246, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.spectra-glow:hover {
+  box-shadow: 
+    0 0 30px rgba(139, 92, 246, 0.4),
+    0 0 60px rgba(139, 92, 246, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Enterprise Input Focus */
+.input-focus:focus {
+  box-shadow: 
+    0 0 0 3px rgba(139, 92, 246, 0.15),
+    0 4px 20px rgba(139, 92, 246, 0.1);
+  border-color: #8b5cf6;
+  transform: translateY(-1px);
+}
+
+/* Professional Transitions */
+* {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Backdrop Blur Fallbacks */
+@supports not (backdrop-filter: blur(12px)) {
+  .backdrop-blur-xl {
+    background-color: rgba(15, 23, 42, 0.8);
+  }
+  
+  .backdrop-blur-sm {
+    background-color: rgba(30, 41, 59, 0.9);
+  }
+}
+
+/* Enhanced Animation Classes */
+.message-enter {
+  opacity: 0;
+  transform: translateY(30px) scale(0.96);
+}
+
+.message-enter-active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition: all 400ms cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Professional Button Hover */
+button {
+  transform: translateY(0);
+  transition: all 0.2s ease;
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+/* Text Selection */
+::selection {
+  background-color: rgba(139, 92, 246, 0.3);
+  color: white;
+}
+
+/* Professional Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+/* Professional Focus Indicators */
+input:focus,
+button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.5);
+}
+
+/* Loading States */
+.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* Professional Shadows */
+.professional-shadow {
+  box-shadow: 
+    0 10px 25px -5px rgba(0, 0, 0, 0.2),
+    0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+
+.professional-shadow-lg {
+  box-shadow: 
+    0 20px 50px -12px rgba(0, 0, 0, 0.3),
+    0 12px 20px -8px rgba(0, 0, 0, 0.15);
+}
