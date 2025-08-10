@@ -665,7 +665,7 @@ async def get_status():
 
 if __name__ == '__main__':
     HOST = os.getenv('HOST', '127.0.0.1')
-    PORT = int(os.getenv('PORT', 5000))
+    PORT = int(os.getenv('PORT', 8000))
 
     logger.info(
         "startup",
