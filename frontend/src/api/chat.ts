@@ -17,7 +17,13 @@ const api = axios.create({
     "Content-Type": "application/json",
   },
 });
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
+const response = await fetch(`${API_BASE_URL}/your-endpoint`, {
+  method: 'POST', // or GET
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(data)
+});
 // Add response interceptor for better error handling
 api.interceptors.response.use(
   (response: any) => response,
