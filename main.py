@@ -1,3 +1,11 @@
+from dotenv import load_dotenv
+import os
+
+load_dotenv()  # loads .env file automatically
+
+OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
+ANTHROPIC_API_KEY = os.getenv('ANTHROPIC_API_KEY')
+
 """FastAPI backend for Spectra AI.
 
 Key protocol (enforced in code):
