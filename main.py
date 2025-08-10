@@ -654,3 +654,27 @@ async def get_status():
 
         return StatusResponse(
             status
+
+if __name__ == '__main__':
+    HOST = os.getenv('HOST', '127.0.0.1')
+    PORT = int(os.getenv('PORT', 5000))
+
+    logger.info(
+        "startup",
+        host=HOST,
+        port=PORT,
+        model=spectra.model,
+        available_models=spectra.available_models,
+        log_format=os.getenv('SPECTRA_LOG_FORMAT', 'json')
+    )
+
+    uvicorn.run(
+        "main:app",
+        host=HOST,
+        port=PORT,
+        reload=os.getenv('ENVIRONMENT') == 'development',
+        log_level="info"
+    )
+
+# For Vercel deployment
+handler = app
