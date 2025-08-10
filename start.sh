@@ -55,7 +55,7 @@ else
 fi
 
 # Start FastAPI backend (gunicorn in production, uvicorn reload in dev)
-BACKEND_PORT="${PORT:-5000}"
+BACKEND_PORT="${PORT:-8000}"
 if [ "${ENVIRONMENT:-development}" = "production" ]; then
   echo "⚡ Starting FastAPI backend (gunicorn) on port $BACKEND_PORT"
   (gunicorn main:app -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:"$BACKEND_PORT" --workers 2 --timeout 120 >/dev/null 2>&1 &)
@@ -69,8 +69,8 @@ echo "⚛️ Starting React frontend (port 3000)"
 (cd frontend && npm run dev >/dev/null 2>&1 &)
 
 echo "\n✅ All services launching. Key URLs:" 
-echo "   ⚡ API:           http://localhost:${PORT:-5000}" 
-echo "   📚 API Docs:      http://localhost:${PORT:-5000}/docs" 
+echo "   ⚡ API:           http://localhost:${PORT:-8000}" 
+echo "   📚 API Docs:      http://localhost:${PORT:-8000}/docs" 
 echo "   ⚛️ Frontend:      http://localhost:3000" 
 echo "   🤖 Ollama API:    http://localhost:11434" 
 echo "\n💜 Spectra AI is warming up emotionally and intellectually!"
