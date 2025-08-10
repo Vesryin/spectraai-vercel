@@ -9,21 +9,18 @@ import {
   ToggleAutoModelResponse,
 } from "../types";
 
+// Get API base URL from environment variables
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:8000";
+
 // Dynamic API configuration
 const api = axios.create({
-  baseURL: "/api",
+  baseURL: API_BASE_URL, // ✅ Now points to Railway backend
   timeout: 120000, // Increased timeout to 2 minutes for AI responses
   headers: {
     "Content-Type": "application/json",
   },
 });
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
-const response = await fetch(`${API_BASE_URL}/your-endpoint`, {
-  method: 'POST', // or GET
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify(data)
-});
 // Add response interceptor for better error handling
 api.interceptors.response.use(
   (response: any) => response,
@@ -53,6 +50,7 @@ api.interceptors.response.use(
   }
 );
 
+// API calls
 export const sendMessage = async (
   message: string,
   history: Message[]
@@ -60,12 +58,10 @@ export const sendMessage = async (
   const response = await api.post("/chat", {
     message,
     history: history.slice(-10).map((msg) => ({
-      // Keep last 10 messages
       role: msg.sender === "user" ? "user" : "assistant",
       content: msg.content,
     })),
   });
-
   return response.data;
 };
 
@@ -74,13 +70,11 @@ export const checkStatus = async () => {
   return response.data;
 };
 
-// Fetch model list
 export const fetchModels = async (): Promise<ModelListResponse> => {
   const res = await api.get("/models");
   return res.data;
 };
 
-// Select model
 export const selectModel = async (
   model: string
 ): Promise<ModelSelectResponse> => {
@@ -88,13 +82,11 @@ export const selectModel = async (
   return res.data;
 };
 
-// Fetch metrics
 export const fetchMetrics = async (): Promise<MetricsResponse> => {
   const res = await api.get("/metrics");
   return res.data;
 };
 
-// Toggle auto model
 export const toggleAutoModel = async (
   enabled?: boolean
 ): Promise<ToggleAutoModelResponse> => {
@@ -102,7 +94,6 @@ export const toggleAutoModel = async (
   return res.data;
 };
 
-// Personality hash
 export const fetchPersonalityHash =
   async (): Promise<PersonalityHashResponse> => {
     const res = await api.get("/personality/hash");
